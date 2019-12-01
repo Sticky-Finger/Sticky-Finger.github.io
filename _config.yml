@@ -98,3 +98,4 @@ theme: hexo-theme-yilia
 deploy:
   type: git
   repo: https://github.com/Sticky-Finger/Sticky-Finger.github.io.git
+  branch: master
