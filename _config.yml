@@ -3,12 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: '学习Blog'
+subtitle: '随便写写'
 description: ''
-keywords:
+keywords: 博客
 author: Sticky-Finger
-language: en
+# language: en
+language: zh-Hans
 timezone: ''
 
 # URL
