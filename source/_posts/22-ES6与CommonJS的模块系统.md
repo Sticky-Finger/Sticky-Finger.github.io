@@ -9,6 +9,8 @@ tags: TypeScript
 
 #### CommonJS
 
+<!-- more -->
+
 代码运行：
 - 先全局安装`ts-node`
 ```

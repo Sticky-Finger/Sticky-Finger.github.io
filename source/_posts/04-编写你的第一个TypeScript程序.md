@@ -13,6 +13,9 @@ tags: TypeScript
 ## 
 - 1)新建文件夹：`ts_in_action`;然后用VSCode打开该文件夹
 - 2）ts_in_action目录下运行：
+
+<!-- more -->
+
 ```
 # 创建package.json
 npm init -y
