@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
-  <title>15：类型检查机制（1）：类型推断 | Hexo</title>
+  <title>15：类型检查机制（1）：类型推断 | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="类型检查机制:TypeScript编译器在做类型检查时，所秉承的一些原则，以及表现出的一些行为 作用:辅助开发，提高开发效率  类型推断 类型兼容性 类型保护   不需要指定变量的类型（函数的返回值类型），TypeScript可以根据某些规则自动地为其推断出一个类型   基础类型推断 最佳通用类型推断 上下文类型推断  12345&#x2F;&#x2F; 1.基础类型推断let a = 1; &#x2F;&#x2F; a的类型推断为nu">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="15：类型检查机制（1）：类型推断">
 <meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;15%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5%E6%9C%BA%E5%88%B6%EF%BC%881%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD&#x2F;index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="学习Blog">
 <meta property="og:description" content="类型检查机制:TypeScript编译器在做类型检查时，所秉承的一些原则，以及表现出的一些行为 作用:辅助开发，提高开发效率  类型推断 类型兼容性 类型保护   不需要指定变量的类型（函数的返回值类型），TypeScript可以根据某些规则自动地为其推断出一个类型   基础类型推断 最佳通用类型推断 上下文类型推断  12345&#x2F;&#x2F; 1.基础类型推断let a = 1; &#x2F;&#x2F; a的类型推断为nu">
-<meta property="og:locale" content="en">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-12-01T03:57:56.083Z">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -46,11 +46,13 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="assets/sxy.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Sticky-Finger</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">随便写写</p>
 		
 
 		<nav class="header-menu">
@@ -104,11 +106,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="assets/sxy.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Sticky-Finger</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>随便写写<i class="icon icon-quo-right"></i></p>
 			
 			
 			
