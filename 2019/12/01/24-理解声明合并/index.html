@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
   <title>24 理解声明合并 | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="声明合并指:编译器会把程序多个地方具有相同名称的声明合并为一个声明 这样的好处–可以把程序中散落在各处的重名声明，合并在一起 通过声明合并就可以避免对接口成员的遗漏 接口的声明合并123456789101112interface A &amp;#123;    x: number;    &#x2F;&#x2F; y: string; &#x2F;&#x2F; 编译器报错&amp;#125;interface A &amp;#123;    y: number">
+  <meta name="description" content="声明合并指:编译器会把程序多个地方具有相同名称的声明合并为一个声明 这样的好处–可以把程序中散落在各处的重名声明，合并在一起 通过声明合并就可以避免对接口成员的遗漏">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="24 理解声明合并">
 <meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;24-%E7%90%86%E8%A7%A3%E5%A3%B0%E6%98%8E%E5%90%88%E5%B9%B6&#x2F;index.html">
 <meta property="og:site_name" content="学习Blog">
-<meta property="og:description" content="声明合并指:编译器会把程序多个地方具有相同名称的声明合并为一个声明 这样的好处–可以把程序中散落在各处的重名声明，合并在一起 通过声明合并就可以避免对接口成员的遗漏 接口的声明合并123456789101112interface A &amp;#123;    x: number;    &#x2F;&#x2F; y: string; &#x2F;&#x2F; 编译器报错&amp;#125;interface A &amp;#123;    y: number">
+<meta property="og:description" content="声明合并指:编译器会把程序多个地方具有相同名称的声明合并为一个声明 这样的好处–可以把程序中散落在各处的重名声明，合并在一起 通过声明合并就可以避免对接口成员的遗漏">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T04:03:49.531Z">
+<meta property="og:updated_time" content="2019-12-01T17:18:28.431Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="assets/sxy.jpg" class="js-avatar">
+			<img src="assets/sxy_avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Sticky-Finger</a></h1>
@@ -82,13 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="assets/sxy.jpg" class="js-avatar">
+				<img src="assets/sxy_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Sticky-Finger</h1>
@@ -125,13 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -180,6 +172,8 @@
         <p>声明合并指:编译器会把程序多个地方具有相同名称的声明合并为一个声明</p>
 <p>这样的好处–可以把程序中散落在各处的重名声明，合并在一起</p>
 <p>通过声明合并就可以避免对接口成员的遗漏</p>
+<a id="more"></a>
+
 <h2 id="接口的声明合并"><a href="#接口的声明合并" class="headerlink" title="接口的声明合并"></a>接口的声明合并</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line">    x: <span class="built_in">number</span>;</span><br><span class="line">    <span class="comment">// y: string; // 编译器报错</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> A &#123;</span><br><span class="line">    y: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a: A = &#123; <span class="comment">// a中要有A接口的所有成员</span></span><br><span class="line">    x: <span class="number">1</span>,</span><br><span class="line">    y: <span class="number">1</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <ul>

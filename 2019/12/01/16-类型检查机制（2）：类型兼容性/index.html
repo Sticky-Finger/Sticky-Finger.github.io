@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
   <title>16 类型检查机制（2）：类型兼容性 | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="定义:当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y X兼容: X(目标类型) = Y(源类型)  12let s: string = &amp;apos;a&amp;apos; &#x2F;&#x2F; 关闭tsconfig.json中strictNullChecks,字符串变量可赋值给nulls = null;  接口兼容性1234567891011121314&#x2F;&#x2F; 接口兼容性interface X &amp;#123;    a:">
+  <meta name="description" content="定义:当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y X兼容: X(目标类型) = Y(源类型)  12let s: string = &amp;apos;a&amp;apos; &#x2F;&#x2F; 关闭tsconfig.json中strictNullChecks,字符串变量可赋值给nulls = null;  接口兼容性">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="16 类型检查机制（2）：类型兼容性">
 <meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;16-%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5%E6%9C%BA%E5%88%B6%EF%BC%882%EF%BC%89%EF%BC%9A%E7%B1%BB%E5%9E%8B%E5%85%BC%E5%AE%B9%E6%80%A7&#x2F;index.html">
 <meta property="og:site_name" content="学习Blog">
-<meta property="og:description" content="定义:当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y X兼容: X(目标类型) = Y(源类型)  12let s: string = &amp;apos;a&amp;apos; &#x2F;&#x2F; 关闭tsconfig.json中strictNullChecks,字符串变量可赋值给nulls = null;  接口兼容性1234567891011121314&#x2F;&#x2F; 接口兼容性interface X &amp;#123;    a:">
+<meta property="og:description" content="定义:当一个类型Y可以被赋值给另一个类型X时，我们就可以说类型X兼容类型Y X兼容: X(目标类型) = Y(源类型)  12let s: string = &amp;apos;a&amp;apos; &#x2F;&#x2F; 关闭tsconfig.json中strictNullChecks,字符串变量可赋值给nulls = null;  接口兼容性">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T04:00:16.891Z">
+<meta property="og:updated_time" content="2019-12-01T17:21:30.704Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="assets/sxy.jpg" class="js-avatar">
+			<img src="assets/sxy_avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Sticky-Finger</a></h1>
@@ -82,13 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="assets/sxy.jpg" class="js-avatar">
+				<img src="assets/sxy_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Sticky-Finger</h1>
@@ -125,13 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -182,7 +174,9 @@
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s: <span class="built_in">string</span> = <span class="string">'a'</span> <span class="comment">// 关闭tsconfig.json中strictNullChecks,字符串变量可赋值给null</span></span><br><span class="line">s = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
 
-<h2 id="接口兼容性"><a href="#接口兼容性" class="headerlink" title="接口兼容性"></a>接口兼容性</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口兼容性</span></span><br><span class="line"><span class="keyword">interface</span> X &#123;</span><br><span class="line">    a: <span class="built_in">any</span>;</span><br><span class="line">    b: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Y &#123;</span><br><span class="line">    a: <span class="built_in">any</span>;</span><br><span class="line">    b: <span class="built_in">any</span>;</span><br><span class="line">    c: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> x: X = &#123; a: <span class="number">1</span>, b: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> y: Y = &#123; a: <span class="number">1</span>, b: <span class="number">2</span>, c: <span class="number">3</span> &#125;</span><br><span class="line">x = y; <span class="comment">// ok,x兼容y</span></span><br><span class="line"><span class="comment">// y = x; // fail</span></span><br></pre></td></tr></table></figure>
+<h2 id="接口兼容性"><a href="#接口兼容性" class="headerlink" title="接口兼容性"></a>接口兼容性</h2><a id="more"></a>
+
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口兼容性</span></span><br><span class="line"><span class="keyword">interface</span> X &#123;</span><br><span class="line">    a: <span class="built_in">any</span>;</span><br><span class="line">    b: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Y &#123;</span><br><span class="line">    a: <span class="built_in">any</span>;</span><br><span class="line">    b: <span class="built_in">any</span>;</span><br><span class="line">    c: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> x: X = &#123; a: <span class="number">1</span>, b: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> y: Y = &#123; a: <span class="number">1</span>, b: <span class="number">2</span>, c: <span class="number">3</span> &#125;</span><br><span class="line">x = y; <span class="comment">// ok,x兼容y</span></span><br><span class="line"><span class="comment">// y = x; // fail</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><h4 id="接口之间兼容时，成员少的兼容成员多的"><a href="#接口之间兼容时，成员少的兼容成员多的" class="headerlink" title="接口之间兼容时，成员少的兼容成员多的"></a>接口之间兼容时，成员少的兼容成员多的</h4></li>
 </ul>

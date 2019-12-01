@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
   <title>25 如何编写声明文件 | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何在ts中引入外部类库，以及如何为它们编写声明文件 示例: 1.引入jQuery 安装(类库一般分为3类:全局类库，模块类库，umd类库)    1234567&#x2F;&#x2F; index.ts&#x2F;&#x2F; 模块化方式引用(全局引入需要webpack配合)import $ from &amp;apos;jQuery&amp;apos;; &#x2F;&#x2F; jQuery是js库，需要声明文件，没有会报错&#x2F;&#x2F; 安装 npm i @types&#x2F;jQuery$(&amp;apos;#ap">
+  <meta name="description" content="如何在ts中引入外部类库，以及如何为它们编写声明文件">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="25 如何编写声明文件">
 <meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;25-%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6&#x2F;index.html">
 <meta property="og:site_name" content="学习Blog">
-<meta property="og:description" content="如何在ts中引入外部类库，以及如何为它们编写声明文件 示例: 1.引入jQuery 安装(类库一般分为3类:全局类库，模块类库，umd类库)    1234567&#x2F;&#x2F; index.ts&#x2F;&#x2F; 模块化方式引用(全局引入需要webpack配合)import $ from &amp;apos;jQuery&amp;apos;; &#x2F;&#x2F; jQuery是js库，需要声明文件，没有会报错&#x2F;&#x2F; 安装 npm i @types&#x2F;jQuery$(&amp;apos;#ap">
+<meta property="og:description" content="如何在ts中引入外部类库，以及如何为它们编写声明文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T04:04:43.147Z">
+<meta property="og:updated_time" content="2019-12-01T17:17:51.457Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="assets/sxy.jpg" class="js-avatar">
+			<img src="assets/sxy_avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Sticky-Finger</a></h1>
@@ -82,13 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="assets/sxy.jpg" class="js-avatar">
+				<img src="assets/sxy_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Sticky-Finger</h1>
@@ -125,13 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -178,6 +170,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>如何在ts中引入外部类库，以及如何为它们编写声明文件</p>
+<a id="more"></a>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h2><ul>
 <li>1.引入jQuery<ul>
 <li>安装(类库一般分为3类:全局类库，模块类库，umd类库)</li>

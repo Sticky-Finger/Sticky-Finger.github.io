@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
   <title>23 使用命名空间 | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="src目录下新建两回合文件:  a.ts 12345678&#x2F;&#x2F; a.tsnamspace Shape &amp;#123;    const pi = Math.PI;    export function circle(r: number) &amp;#123;        return pi * r ** 2;    &amp;#125;&amp;#125; 命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见">
+  <meta name="description" content="src目录下新建两回合文件:  a.ts12345678&#x2F;&#x2F; a.tsnamspace Shape &amp;#123;    const pi = Math.PI;    export function circle(r: number) &amp;#123;        return pi * r ** 2;    &amp;#125;&amp;#125; 命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见，">
 <meta name="keywords" content="TypeScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="23 使用命名空间">
 <meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;23-%E4%BD%BF%E7%94%A8%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4&#x2F;index.html">
 <meta property="og:site_name" content="学习Blog">
-<meta property="og:description" content="src目录下新建两回合文件:  a.ts 12345678&#x2F;&#x2F; a.tsnamspace Shape &amp;#123;    const pi = Math.PI;    export function circle(r: number) &amp;#123;        return pi * r ** 2;    &amp;#125;&amp;#125; 命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见">
+<meta property="og:description" content="src目录下新建两回合文件:  a.ts12345678&#x2F;&#x2F; a.tsnamspace Shape &amp;#123;    const pi = Math.PI;    export function circle(r: number) &amp;#123;        return pi * r ** 2;    &amp;#125;&amp;#125; 命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-01T04:02:48.176Z">
+<meta property="og:updated_time" content="2019-12-01T17:19:43.728Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
@@ -46,7 +46,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="assets/sxy.jpg" class="js-avatar">
+			<img src="assets/sxy_avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Sticky-Finger</a></h1>
@@ -82,13 +82,9 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 		        
 			</div>
 		</nav>
@@ -106,7 +102,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="assets/sxy.jpg" class="js-avatar">
+				<img src="assets/sxy_avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Sticky-Finger</h1>
@@ -125,13 +121,9 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/Sticky-Finger" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/si-jia-29/activities" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -179,12 +171,13 @@
       
         <p>src目录下新建两回合文件:</p>
 <ul>
-<li><p>a.ts</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.ts</span></span><br><span class="line"></span><br><span class="line">namspace Shape &#123;</span><br><span class="line">    <span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">circle</span>(<span class="params">r: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pi * r ** <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见，如果想要这些成员在全局内可见就要使用export关键字将其导出</p>
-</li>
-<li><p>命名空间是可以拆分的</p>
-</li>
+<li>a.ts<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.ts</span></span><br><span class="line"></span><br><span class="line">namspace Shape &#123;</span><br><span class="line">    <span class="keyword">const</span> pi = <span class="built_in">Math</span>.PI;</span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">circle</span>(<span class="params">r: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> pi * r ** <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+命名空间中可以定义任意多的变量，这些变量只能在这个命名空间下可见，如果想要这些成员在全局内可见就要使用export关键字将其导出</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>命名空间是可以拆分的</li>
 </ul>
 <p>b.ts(和a.ts共享一个命名空间):</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// &lt;reference path="a.ts" /&gt; // 引入a.ts</span></span><br><span class="line"><span class="keyword">namespace</span> Shape &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params">x: <span class="built_in">number</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x * x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用命名空间</span></span><br><span class="line">Shape.circle(<span class="number">1</span>); <span class="comment">// 没有引入a.ts时，报命名空间Shape中没有circle</span></span><br><span class="line">Shape.square(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
