@@ -6,14 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://sticky-finger.github.io">
-  <title>Archives | 学习Blog</title>
+  <title>给uni-app代码添加eslint | 学习Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="学习Blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;archives&#x2F;page&#x2F;2&#x2F;index.html">
+  <meta name="description" content="目标 语法检查、设定风格（需额外使用prettier）  设置webpack，在构建前进行语法检查，不通过不让构建成功">
+<meta name="keywords" content="uni-app,vue,eslint">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给uni-app代码添加eslint">
+<meta property="og:url" content="https:&#x2F;&#x2F;sticky-finger.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E7%BB%99uni-app%E4%BB%A3%E7%A0%81%E6%B7%BB%E5%8A%A0eslint&#x2F;index.html">
 <meta property="og:site_name" content="学习Blog">
+<meta property="og:description" content="目标 语法检查、设定风格（需额外使用prettier）  设置webpack，在构建前进行语法检查，不通过不让构建成功">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-04T06:30:27.134Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="学习Blog" type="application/atom+xml">
@@ -142,101 +145,326 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-给uni-app代码添加eslint" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/01/03-%E7%B1%BB%E5%9E%8B%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89%EF%BC%9A%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B%E4%B8%8E%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2019-12-01T03:53:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/01/03-%E7%B1%BB%E5%9E%8B%E5%9F%BA%E7%A1%80%EF%BC%882%EF%BC%89%EF%BC%9A%E5%8A%A8%E6%80%81%E7%B1%BB%E5%9E%8B%E4%B8%8E%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B/">03 类型基础（2）：动态类型与静态类型</a>
+    <h1 class="article-title" itemprop="name">
+      给uni-app代码添加eslint
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/12/04/%E7%BB%99uni-app%E4%BB%A3%E7%A0%81%E6%B7%BB%E5%8A%A0eslint/" class="archive-article-date">
+  	<time datetime="2019-12-04T04:46:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><p>语法检查、设定风格（需额外使用prettier）</p>
+</li>
+<li><p>设置webpack，在构建前进行语法检查，不通过不让构建成功</p>
+<a id="more"></a>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2></li>
+<li><p>1）安装eslint</p>
+</li>
+<li><p>2）安装prettier</p>
+</li>
+<li><p>配置eslint:</p>
+<ul>
+<li><p>初始化生成配置文件eslintrc.js：<code>npx eslint --init -y</code></p>
+</li>
+<li><p>配好的文件示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">// .eslintrc.js</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  root: true,</span><br><span class="line">  env: &#123;</span><br><span class="line">    es6: true,</span><br><span class="line">    node: true,</span><br><span class="line">    browser: true,</span><br><span class="line">  &#125;,</span><br><span class="line">  // parserOptions: &#123; // 解决不了 import()报错</span><br><span class="line">  //   parser: &apos;babel-eslint&apos;, // Parsing error: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment &lt;&gt;...&lt;/&gt;</span><br><span class="line">  // &#125;,</span><br><span class="line">  parserOptions: &#123;</span><br><span class="line">    parser: &apos;babel-eslint&apos;,</span><br><span class="line">    ecmaVersion: 2018,</span><br><span class="line">    sourceType: &apos;module&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  // parser: &apos;babel-eslint&apos;, 解决：import()报错</span><br><span class="line">  extends: [</span><br><span class="line">    &apos;airbnb&apos;,</span><br><span class="line">    // &apos;airbnb-base&apos;,</span><br><span class="line">    // &apos;plugin:vue/essential&apos;,</span><br><span class="line">    &apos;plugin:vue/recommended&apos;,</span><br><span class="line">    &apos;plugin:prettier/recommended&apos;,</span><br><span class="line">    &apos;eslint:recommended&apos;,</span><br><span class="line">    &apos;prettier&apos;,</span><br><span class="line">    &apos;prettier/vue&apos;,</span><br><span class="line">  ],</span><br><span class="line">  // 允许的全局变量</span><br><span class="line">  globals: &#123;</span><br><span class="line">    Atomics: &apos;readonly&apos;,</span><br><span class="line">    SharedArrayBuffer: &apos;readonly&apos;,</span><br><span class="line">    uni: &apos;readonly&apos;,</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    &apos;vue&apos;,</span><br><span class="line">    &quot;prettier&quot;,</span><br><span class="line">  ],</span><br><span class="line">  rules: &#123;</span><br><span class="line">    // &quot;import/no-unresolved&quot;: &apos;off&apos;,</span><br><span class="line"></span><br><span class="line">    &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,</span><br><span class="line">    &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,</span><br><span class="line">    &apos;vue/attribute-hyphenation&apos;: &apos;off&apos;; // 允许vue组件上的属性v-bind时使用驼峰命名法</span><br><span class="line">    // &quot;semi-style&quot;: [&quot;error&quot;, &quot;last&quot;],</span><br><span class="line">    // ！！！ eslint引入prettier的规则，放置eslint规则与prettier规则冲突</span><br><span class="line">    &apos;prettier/prettier&apos;: [</span><br><span class="line">      &apos;error&apos;,</span><br><span class="line">      &#123;</span><br><span class="line">        printWidth: 80,</span><br><span class="line">        semi: true,</span><br><span class="line">        singleQuote: true,</span><br><span class="line">        trailingComma: &apos;all&apos;,</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  settings: &#123;</span><br><span class="line">    &apos;import/resolver&apos;: &#123;</span><br><span class="line">      webpack: &#123;</span><br><span class="line">        // config: &apos;./vue.config.js&apos;,</span><br><span class="line">        config: &apos;node_modules/@vue/cli-service/webpack.config.js&apos;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要安装的相关包：</p>
+<ul>
+<li><p>eslint</p>
+</li>
+<li><p>prettier</p>
+</li>
+<li><p>eslint-loader</p>
+</li>
+<li><p>babel-eslint</p>
+</li>
+<li><p>eslint-config-airbnb</p>
+</li>
+<li><p>eslint-plugin-react</p>
+</li>
+<li><p>eslint-plugin-jsx-a11y</p>
+</li>
+<li><p>eslint-plugin-vue</p>
+</li>
+<li><p>eslint-plugin-prettier</p>
+</li>
+<li><p>eslint-plugin-import</p>
+</li>
+<li><p>eslint-import-resolver-webpack</p>
+</li>
+<li><p>eslint-config-prettier</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>配置prettier,配置文件prettierrc.js示例如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  &quot;printWidth&quot;: 80, //一行的字符数，如果超过会进行换行，默认为80</span><br><span class="line">  &quot;tabWidth&quot;: 2, //一个tab代表几个空格数，默认为80</span><br><span class="line">  &quot;useTabs&quot;: false, //是否使用tab进行缩进，默认为false，表示用空格进行缩减</span><br><span class="line">  &quot;singleQuote&quot;: false, //字符串是否使用单引号，默认为false，使用双引号</span><br><span class="line">  &quot;semi&quot;: true, //行位是否使用分号，默认为true</span><br><span class="line">  &quot;trailingComma&quot;: &quot;none&quot;, //是否使用尾逗号，有三个可选值&quot;&lt;none|es5|all&gt;&quot;</span><br><span class="line">  &quot;bracketSpacing&quot;: true, //对象大括号直接是否有空格，默认为true，效果：&#123; foo: bar &#125;</span><br><span class="line">  &quot;parser&quot;: &quot;babylon&quot; //代码的解析引擎，默认为babylon，与babel相同。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  参考：<a href="https://segmentfault.com/a/1190000015315545" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015315545</a></p>
+</li>
+<li><p>配置vscode：添加/编辑.vscode/settings.json</p>
+  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"eslint.validate"</span>: [</span><br><span class="line">        <span class="string">"javascript"</span>,</span><br><span class="line">        <span class="string">"javascriptreact"</span>,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"language"</span>: <span class="string">"vue"</span>,</span><br><span class="line">            <span class="attr">"autoFix"</span>: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">"vutur.validation.template"</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">"debug.node.autoAttach"</span>: <span class="string">"off"</span>,</span><br><span class="line">    <span class="attr">"search.exclude"</span>: &#123;</span><br><span class="line">        <span class="attr">"**/node_modules"</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">"**/bower_components"</span>: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>同时.gitignore添加配置，以忽略IDE的eslint检查配置：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"># IDE</span><br><span class="line">.idea</span><br><span class="line">.vscode/*</span><br><span class="line">!.vscode/settings.json</span><br><span class="line">!.vscode/tasks.json</span><br><span class="line">!.vscode/launch.json</span><br><span class="line">!.vscode/extensions.json</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>配置webpack(配置vue.config.js)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const webpack = require(&apos;webpack&apos;)</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    configureWebpack: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">            new webpack.ProvidePlugin(&#123;</span><br><span class="line">                &apos;localStorage&apos;: [&apos;mp-storage&apos;, &apos;localStorage&apos;],</span><br><span class="line">                &apos;window.localStorage&apos;: [&apos;mp-storage&apos;, &apos;localStorage&apos;]</span><br><span class="line">            &#125;)</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="">!!!</a>上述配置无效</p>
+</li>
+<li><p>在webpack上配置在构建前先eslint检查代码：</p>
+<ul>
+<li>安装eslint-loader</li>
+<li>配置webpack，配置文件示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// webpack.config.js</span><br><span class="line">...</span><br><span class="line">module: &#123;</span><br><span class="line">  rules: [</span><br><span class="line">    &#123;</span><br><span class="line">      enforce: &apos;pre&apos;,</span><br><span class="line">      test: /\.(js|vue|ts)$/,</span><br><span class="line">      loader: &apos;eslint-loader&apos;,</span><br><span class="line">      include: /src/,</span><br><span class="line">      exclude: /node_modules/,</span><br><span class="line">      options: &#123;</span><br><span class="line">        fix: true,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">  ],</span><br><span class="line">&#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h2 id="配置中的报错"><a href="#配置中的报错" class="headerlink" title="配置中的报错"></a>配置中的报错</h2></li>
+</ul>
+</li>
+<li><p>1.使用eslint-config-prettier</p>
+</li>
+</ul>
+<p><strong>参考</strong>：  </p>
+<blockquote>
+<p>1.uni-app配置webpack：<a href="https://uniapp.dcloud.io/collocation/vue-config" target="_blank" rel="noopener">https://uniapp.dcloud.io/collocation/vue-config</a><br>2.vue.config.js配置：<a href="https://cli.vuejs.org/zh/config/#vue-config-js" target="_blank" rel="noopener">https://cli.vuejs.org/zh/config/#vue-config-js</a><br>3.eslint配置模板:<a href="https://zhuanlan.zhihu.com/p/87667635" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/87667635</a><br>4.VSCode 使用 ESLint + Prettier 来统一 JS 代码:<a href="https://www.cnblogs.com/xjnotxj/p/10828183.html" target="_blank" rel="noopener">https://www.cnblogs.com/xjnotxj/p/10828183.html</a><br>5.使用ESLint+Prettier来统一前端代码风格：<a href="https://segmentfault.com/a/1190000015315545" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015315545</a><br>6.webpack链式配置：<a href="https://cli.vuejs.org/zh/guide/webpack.html#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C-%E9%AB%98%E7%BA%A7" target="_blank" rel="noopener">https://cli.vuejs.org/zh/guide/webpack.html#%E9%93%BE%E5%BC%8F%E6%93%8D%E4%BD%9C-%E9%AB%98%E7%BA%A7</a><br>7.webpack-chain文档：<a href="https://github.com/neutrinojs/webpack-chain" target="_blank" rel="noopener">https://github.com/neutrinojs/webpack-chain</a><br>8.eslint最全配置模板:<a href="https://zhuanlan.zhihu.com/p/87667635" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/87667635</a><br>9.VS Code Prettier + ESlint 格式化Vue代码及遇到问题(如模板中尖括号掉到下一行):<a href="https://zhuanlan.zhihu.com/p/64627216" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/64627216</a></p>
+</blockquote>
+<h2 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h2><ul>
+<li><p>1.esint报错Parsing error: Unexpected token import eslint：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const ImageUploadPreview = () =&gt; import(&apos;@/components/ImageUploadPreview/index.vue&apos;);</span><br><span class="line">// import处报错的问题，因为eslint默认用node解析语法，node不支持import(...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装babel-eslint，在eslint配置中添加<code>parser: &#39;babel-eslint&#39;,</code></li>
+<li>参考：<a href="https://blog.csdn.net/hsl0530hsl/article/details/78695922" target="_blank" rel="noopener">https://blog.csdn.net/hsl0530hsl/article/details/78695922</a></li>
+</ul>
+</li>
+<li><p>2.如何允许在json中出现注释?（Comments are not permitted in JSON.(521)）</p>
+</li>
+<li><p>3.Parsing error: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment &lt;&gt;…&lt;/&gt;</p>
+<blockquote>
+<p>参考：<br>(1)vue eslint 报错Adjacent JSX elements must be wrapped:<a href="https://segmentfault.com/q/1010000017163378" target="_blank" rel="noopener">https://segmentfault.com/q/1010000017163378</a><br>(2)<a href="https://github.com/vuejs/eslint-plugin-vue/issues/186#issuecomment-329426553" target="_blank" rel="noopener">https://github.com/vuejs/eslint-plugin-vue/issues/186#issuecomment-329426553</a></p>
+</blockquote>
+</li>
+<li><p>4.json文件报 Parsing error: Unexpected token, expected “;”<br>参考：<a href="https://github.com/eslint/eslint/issues/11593" target="_blank" rel="noopener">https://github.com/eslint/eslint/issues/11593</a></p>
+<blockquote>
+<p>eslint-loader只适用于检查js之类的代码，不适用于检查json语法（检查json文件时，会把它当成js），修改webpack配置，使eslint不检查json</p>
+</blockquote>
+<p>  vue.config.js:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">configureWebpack: &#123;</span><br><span class="line">    module: &#123;</span><br><span class="line">      rules: [</span><br><span class="line">        &#123;</span><br><span class="line">          enforce: &apos;pre&apos;,</span><br><span class="line">          test: /\.(js|vue|ts)/, // 改为如下</span><br><span class="line">          test: /\.(js|vue|ts)$/,</span><br><span class="line">          loader: &apos;eslint-loader&apos;,</span><br><span class="line">          // include: /src/,</span><br><span class="line">          // ！！！指定目录组</span><br><span class="line">          include: [</span><br><span class="line">            path.resolve(__dirname, &apos;../src/pages&apos;), // 目录</span><br><span class="line">            path.resolve(__dirname, &apos;../src/index.js&apos;), // 文件</span><br><span class="line">          ],</span><br><span class="line">          include</span><br><span class="line">          exclude: /node_modules/,</span><br><span class="line">          options: &#123;</span><br><span class="line">            fix: true,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="">??</a>5.uni-app条件编译，出现同一变量两次引入，报 Parsing error: Identifier ‘ImageUploadPreview’ has already been declared</p>
+<ul>
+<li>尝试1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// eslintrc.js中配置如下规则，还是报错</span><br><span class="line">...</span><br><span class="line">rules: &#123;</span><br><span class="line">    &apos;no-duplicate-imports&apos;: &apos;off&apos;,</span><br><span class="line">    &apos;no-redeclare&apos;: &apos;off&apos;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>6.配置调试，开发环境允许console和debugger，生产不允许：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// .eslintrc.js</span><br><span class="line">...</span><br><span class="line">rules: &#123;</span><br><span class="line">    &quot;no-console&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,</span><br><span class="line">    &quot;no-debugger&quot;: process.env.NODE_ENV === &quot;production&quot; ? &quot;error&quot; : &quot;off&quot;,   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>7.使用alias别名引入模块（如import utils from ‘@/utils’）,报错Unable to resolve path to module ‘@/utils’  import/no-unresolved</p>
+<ul>
+<li><p>安装使用eslint-import-resolver-webpack（eslint-import-resolver-webpack: 可以借助webpack的配置来辅助eslint解析，最有用的就是alias，从而避免unresolved的错误）  </p>
+<ul>
+<li>a.eslintrc.js上配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">settings: &#123;</span><br><span class="line">  &apos;import/resolver&apos;: &#123; // This config is used by eslint-import-resolver-webpack</span><br><span class="line">    webpack: &#123;</span><br><span class="line">      config: &apos;./webpack/webpack-common-config.js&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li>webpack上被读取的配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// webpack-common-config.js</span><br><span class="line">resolve: &#123;</span><br><span class="line">  alias: &#123;</span><br><span class="line">    &apos;@&apos;: resolve(__dirname, &apos;/src&apos;),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>参考：<a href="https://segmentfault.com/q/1010000016679036" target="_blank" rel="noopener">https://segmentfault.com/q/1010000016679036</a></p>
+</li>
+<li><p>由于uni-app的webpack配置是通过vue.config.js添加的，eslint-import-resolver-webpack读取不到。所以还是选择禁用掉import/no-unresolved规则 — 然而并没有</p>
+</li>
+<li><p><a href="">!!</a>这篇（<a href="https://blog.csdn.net/yayay1010/article/details/91411432）中有解决" target="_blank" rel="noopener">https://blog.csdn.net/yayay1010/article/details/91411432）中有解决</a></p>
+<ul>
+<li>webpack上被读取的配置<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">        // webpack-common-config.js</span><br><span class="line">        resolve: &#123;</span><br><span class="line">          alias: &#123;</span><br><span class="line">            // &apos;@&apos;: resolve(__dirname, &apos;/src&apos;),</span><br><span class="line">            config: &apos;node_modules/@vue/cli-service/webpack.config.js&apos;,</span><br><span class="line">          &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">- 8.eslint fix源代码后，规定了文件每行以LF换行，gitcheck检出时又出现以CRLF换行错误，且git工作区是干净的？</span><br><span class="line"></span><br><span class="line">&gt; https://www.cnblogs.com/qiqi715/p/9286468.html</span><br><span class="line">    </span><br><span class="line">`.gitattributes`文件配置参考：</span><br></pre></td></tr></table></figure>
+<h1 id="gitattributes"><a href="#gitattributes" class="headerlink" title=".gitattributes"></a>.gitattributes</h1></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Automatically-normalize-line-endings-for-all-text-based-files"><a href="#Automatically-normalize-line-endings-for-all-text-based-files" class="headerlink" title="Automatically normalize line endings for all text-based files"></a>Automatically normalize line endings for all text-based files</h1><h1 id="http-git-scm-com-docs-gitattributes-end-of-line-conversion"><a href="#http-git-scm-com-docs-gitattributes-end-of-line-conversion" class="headerlink" title="http://git-scm.com/docs/gitattributes#_end_of_line_conversion"></a><a href="http://git-scm.com/docs/gitattributes#_end_of_line_conversion" target="_blank" rel="noopener">http://git-scm.com/docs/gitattributes#_end_of_line_conversion</a></h1><ul>
+<li>text=auto</li>
+</ul>
+<h1 id="For-the-following-file-types-normalize-line-endings-to-LF-on"><a href="#For-the-following-file-types-normalize-line-endings-to-LF-on" class="headerlink" title="For the following file types, normalize line endings to LF on"></a>For the following file types, normalize line endings to LF on</h1><h1 id="checkin-and-prevent-conversion-to-CRLF-when-they-are-checked-out"><a href="#checkin-and-prevent-conversion-to-CRLF-when-they-are-checked-out" class="headerlink" title="checkin and prevent conversion to CRLF when they are checked out"></a>checkin and prevent conversion to CRLF when they are checked out</h1><h1 id="this-is-required-in-order-to-prevent-newline-related-issues-like"><a href="#this-is-required-in-order-to-prevent-newline-related-issues-like" class="headerlink" title="(this is required in order to prevent newline related issues like,"></a>(this is required in order to prevent newline related issues like,</h1><h1 id="for-example-after-the-build-script-is-run"><a href="#for-example-after-the-build-script-is-run" class="headerlink" title="for example, after the build script is run)"></a>for example, after the build script is run)</h1><p>.*      text eol=lf<br>*.html  text eol=if<br>*.css   text eol=if<br>*.less  text eol=if<br>*.styl  text eol=if<br>*.scss  text eol=if<br>*.sass  text eol=if<br>*.sss   text eol=if<br>*.js    text eol=if<br>*.jsx   text eol=if<br>*.json  text eol=if<br>*.vue   text eol=if<br>*.md    text eol=if<br>*.mjs   text eol=if<br>*.sh    text eol=if<br>*.svg   text eol=if<br>*.txt   text eol=if<br>*.xml   text eol=if</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 9.包裹文字时候结束标签的结尾尖括号掉到了下一行。如下：</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;HelloWorld
+    alt=&quot;Vue logo&quot;
+    id=&quot;pc00001&quot;
+    class=&quot;apc def sxxx&quot;
+    msg=&quot;Welcome to Your Vue.js App&quot;
+    &gt;测试&lt;/HelloWorld
+&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 解决：在prettier配置文件中加入：</span><br></pre></td></tr></table></figure>
+// pretterrc.js
+module.exports = {
+    ....
+    HTMLWhitespaceSensitivity : &apos;ignore&apos;
+}
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">即可解决</span><br><span class="line">- 为防止eslint报警，在eslintrc.js中添加配置：</span><br></pre></td></tr></table></figure>
+// eslintrc.js
+
+module.exports = {
+    ...
+    rules: {
+        ...
+        &apos;prettier/prettier&apos;: [
+            &apos;error&apos;,
+            {
+                ...
+                HTMLWhitespaceSensitivity : &apos;ignore&apos;,
+            },
+        ],
+    },
+};
+```</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">TypeScript</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">uni-app</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/01/04-%E7%BC%96%E5%86%99%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AATypeScript%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2019-12-01T03:48:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/01/04-%E7%BC%96%E5%86%99%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AATypeScript%E7%A8%8B%E5%BA%8F/">04 编写你的第一个TypeScript程序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">TypeScript</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">eslint</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://sticky-finger.github.io/2019/12/04/%E7%BB%99uni-app%E4%BB%A3%E7%A0%81%E6%B7%BB%E5%8A%A0eslint/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/02/26-%E9%85%8D%E7%BD%AEtsconfig.json%EF%BC%881%EF%BC%89%EF%BC%9A%E6%96%87%E4%BB%B6%E9%80%89%E9%A1%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">26 配置tsconfig.json（1）：文件选项</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置中的报错"><span class="toc-number">3.</span> <span class="toc-text">配置中的报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#出现的问题"><span class="toc-number">4.</span> <span class="toc-text">出现的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gitattributes"><span class="toc-number"></span> <span class="toc-text">.gitattributes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Automatically-normalize-line-endings-for-all-text-based-files"><span class="toc-number"></span> <span class="toc-text">Automatically normalize line endings for all text-based files</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#http-git-scm-com-docs-gitattributes-end-of-line-conversion"><span class="toc-number"></span> <span class="toc-text">http://git-scm.com/docs/gitattributes#_end_of_line_conversion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#For-the-following-file-types-normalize-line-endings-to-LF-on"><span class="toc-number"></span> <span class="toc-text">For the following file types, normalize line endings to LF on</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#checkin-and-prevent-conversion-to-CRLF-when-they-are-checked-out"><span class="toc-number"></span> <span class="toc-text">checkin and prevent conversion to CRLF when they are checked out</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#this-is-required-in-order-to-prevent-newline-related-issues-like"><span class="toc-number"></span> <span class="toc-text">(this is required in order to prevent newline related issues like,</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#for-example-after-the-build-script-is-run"><span class="toc-number"></span> <span class="toc-text">for example, after the build script is run)</span></a>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
   
 
 
@@ -260,8 +488,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
